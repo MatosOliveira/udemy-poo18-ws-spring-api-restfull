@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import udemy.poo18.ws.spring.api.domain.Post;
 import udemy.poo18.ws.spring.api.domain.User;
+import udemy.poo18.ws.spring.api.dto.AuthorDTO;
 import udemy.poo18.ws.spring.api.repositories.PostRepository;
 import udemy.poo18.ws.spring.api.repositories.UserRepository;
 
@@ -36,8 +37,8 @@ public class Instantiation implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post post1 = new Post(null, LocalDate.parse("01/06/2023", dtf), "Partiu viagem", "Vou viajar para SP.", maria);
-		Post post2 = new Post(null, LocalDate.parse("01/06/2023", dtf), "Bom dia", "Acordei feliz hoje.", maria);
+		Post post1 = new Post(null, LocalDate.parse("01/06/2023", dtf), "Partiu viagem", "Vou viajar para SP.", new AuthorDTO(maria));
+		Post post2 = new Post(null, LocalDate.parse("01/06/2023", dtf), "Bom dia", "Acordei feliz hoje.", new AuthorDTO(maria));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 		
