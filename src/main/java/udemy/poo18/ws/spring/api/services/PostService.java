@@ -1,5 +1,6 @@
 package udemy.poo18.ws.spring.api.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +25,9 @@ public class PostService {
 	public List<Post> findByTitle(String text) {
 		//return repository.findByTitleContainingIgnoreCase(text);
 		return repository.searchTitle(text);
+	}
+	
+	public List<Post> fullSearch(String text, LocalDate minDate, LocalDate maxDate) {
+		return repository.fullSearch(text, minDate, maxDate);
 	}
 }
