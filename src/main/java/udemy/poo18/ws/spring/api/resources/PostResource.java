@@ -1,6 +1,6 @@
 package udemy.poo18.ws.spring.api.resources;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +41,8 @@ public class PostResource {
 			@RequestParam(value = "minDate", defaultValue = "") String minDate, 
 			@RequestParam(value = "maxDate", defaultValue = "") String maxDate) {
 		text = URL.decodeParam(text);
-		LocalDate min = URL.convertDate(minDate);
-		LocalDate max = URL.convertDate(maxDate);
+		Date min = URL.convertDate(minDate, new Date(0L));
+		Date max = URL.convertDate(maxDate, new Date(0L));
 		List<Post> list = service.fullSearch(text, min, max);
 		return ResponseEntity.ok().body(list);
 	}

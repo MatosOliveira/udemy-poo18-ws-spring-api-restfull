@@ -1,6 +1,6 @@
 package udemy.poo18.ws.spring.api.repositories;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -19,6 +19,6 @@ public interface PostRepository extends MongoRepository<Post, String> {
 			+ "{ $or: [ {'title': { $regex: ?0, $options: 'i' }}, "
 			+ "{'body': { $regex: ?0, $options: 'i' }}, "
 			+ "{'comments.text': { $regex: ?0, $options: 'i' }} ] } ] }")
-	List<Post> fullSearch(String text, LocalDate minDate, LocalDate maxDate);
+	List<Post> fullSearch(String text, Date minDate, Date maxDate);
 	
 }
